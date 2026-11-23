@@ -40,3 +40,11 @@ nb-configuration.xml
 
 ### Mac OS ###
 .DS_Store
+
+# LaTeX
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+docs/requisiti/G24-Requisiti.pdf

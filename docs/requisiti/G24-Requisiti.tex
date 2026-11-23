@@ -1,0 +1,93 @@
+% G24 - Documento di Specifica dei Requisiti (compilare con pdflatex, i diagrammi stanno in diagrammi/)
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\textsc{Università degli Studi di Salerno}\\[0.3cm]
+Corso di Ingegneria del Software -- Gruppo G24
+
+\vspace{3cm}
+{\huge Sistema di Prenotazione delle Aule\\ Universitarie\par}
+\vspace{0.8cm}
+{\large Documento di Specifica dei Requisiti\par}
+
+\vspace{2.5cm}
+{\large \textbf{Autori:}\par}
+Aleks De Marco\\
+Felice Fortunato\\
+Gerardo Oliva\\
+Antonio Cetrangolo
+
+\vspace{2.5cm}
+{\large Versione 1.0 - 30 Novembre 2026\par}
+\vspace{0.5cm}
+Docenti: Prof. P. Ritrovato, Prof. N. Capuano\\
+Repository: \url{https://github.com/abusededuce/GestionePrenotazioniG24}
+\end{titlepage}
+
+\section*{Storico delle versioni}
+\begin{center}
+\begin{tabular}{|l|l|p{7cm}|}\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Descrizione delle modifiche} \\ \hline
+1.0 & 30/11/2026 & Prima stesura completa dei requisiti (fase di Requirements Engineering) \\ \hline
+\end{tabular}
+\end{center}
+
+\tableofcontents
+\newpage
+% Ogni sezione sta in un file separato di sezioni/: ognuno modifica solo i propri file.
+% \InputIfFileExists fa compilare il documento anche se un file non è ancora stato pushato.
+
+\section{Descrizione dell'applicazione}
+\InputIfFileExists{sezioni/01-descrizione.tex}{}{}
+
+\section{Requisiti funzionali}
+\InputIfFileExists{sezioni/02-business-flow.tex}{}{}
+
+\subsection{Funzionalità individuali (FI)}
+\InputIfFileExists{sezioni/03-fi-area1-aule.tex}{}{}
+\InputIfFileExists{sezioni/03-fi-area2-docenti.tex}{}{}
+\InputIfFileExists{sezioni/03-fi-area3-inserimento.tex}{}{}
+\InputIfFileExists{sezioni/03-fi-area4-consultazione.tex}{}{}
+
+\subsection{Esigenze di dati e informazioni (ED)}
+\InputIfFileExists{sezioni/04-ed-area1-aule.tex}{}{}
+\InputIfFileExists{sezioni/04-ed-area2-docenti.tex}{}{}
+\InputIfFileExists{sezioni/04-ed-area3-prenotazioni.tex}{}{}
+\InputIfFileExists{sezioni/04-ed-area4-archivio.tex}{}{}
+
+\subsection{Interfaccia utente (IU)}
+\InputIfFileExists{sezioni/05-iu-area1-aule.tex}{}{}
+\InputIfFileExists{sezioni/05-iu-area2-docenti.tex}{}{}
+\InputIfFileExists{sezioni/05-iu-area3-inserimento.tex}{}{}
+\InputIfFileExists{sezioni/05-iu-area4-consultazione.tex}{}{}
+
+\InputIfFileExists{sezioni/06-sistemi-esterni.tex}{}{}
+
+\section{Requisiti non funzionali e vincoli}
+\InputIfFileExists{sezioni/07-non-funzionali.tex}{}{}
+
+\section{Casi d'uso}
+\InputIfFileExists{sezioni/08-uc-convenzioni.tex}{}{}
+\InputIfFileExists{sezioni/09-uc-area1-aule.tex}{}{}
+\InputIfFileExists{sezioni/09-uc-area2-docenti.tex}{}{}
+\InputIfFileExists{sezioni/09-uc-area3-inserimento.tex}{}{}
+\InputIfFileExists{sezioni/09-uc-area4-consultazione.tex}{}{}
+
+\section{Tracciabilità}
+\InputIfFileExists{sezioni/10-tracciabilita.tex}{}{}
+
+\end{document}
