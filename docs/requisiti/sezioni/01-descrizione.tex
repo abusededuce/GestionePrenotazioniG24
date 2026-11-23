@@ -1,0 +1,36 @@
+
+\subsection{Scopo}
+L'applicazione permette alla segreteria di un dipartimento universitario di gestire le \textbf{aule}, i \textbf{docenti} e le \textbf{prenotazioni delle aule} (lezioni, esami, seminari e altre attività). Lo scopo principale è evitare che un'aula venga assegnata contemporaneamente a più attività e che un docente risulti impegnato contemporaneamente in più aule. Tutti i dati vengono conservati in un archivio salvato su file, così da essere disponibili a ogni avvio dell'applicazione.
+
+\subsection{Funzionalità principali}
+\begin{itemize}
+\item \textbf{Gestione delle aule:} inserimento, modifica e cancellazione delle aule; visualizzazione della lista; ricerca per nome, codice o capienza minima.
+\item \textbf{Gestione dei docenti:} inserimento, modifica e cancellazione dei docenti; visualizzazione della lista ordinata per cognome e nome; ricerca per cognome o per e-mail istituzionale.
+\item \textbf{Inserimento delle prenotazioni:} ricerca delle aule disponibili in una data e fascia oraria; inserimento di prenotazioni singole o con ricorrenza settimanale, con controllo automatico delle sovrapposizioni.
+\item \textbf{Consultazione e cancellazione delle prenotazioni:} visualizzazione delle prenotazioni in ordine cronologico, con filtro per aula e/o per docente; cancellazione di una singola prenotazione oppure di un'occorrenza e di tutte le successive della stessa serie.
+\item \textbf{Archivio su file:} caricamento automatico all'avvio e salvataggio automatico dopo ogni modifica.
+\end{itemize}
+
+\subsection{Attori}
+\begin{itemize}
+\item Operatore: Addetto della segreteria del dipartimento che usa l'applicazione tramite l'interfaccia grafica. È l'unico attore del sistema: esegue tutte le operazioni su aule, docenti e prenotazioni.
+\end{itemize}
+I \textbf{docenti} non sono utenti del sistema: sono dati gestiti dall'Operatore (vedi chiarimento C1).
+
+\subsection{Assunzioni}
+\begin{itemize}
+\item \textbf{A1.} L'applicazione è usata da un solo Operatore alla volta, su una singola postazione. L'accesso contemporaneo di più utenti allo stesso archivio non è previsto.
+\item \textbf{A2.} L'applicazione non richiede autenticazione: chi la avvia è autorizzato a usarla.
+\item \textbf{A3.} Data e ora di riferimento (``adesso'') sono quelle del computer su cui l'applicazione è in esecuzione.
+\end{itemize}
+
+\subsection{Glossario}
+Archivio: Insieme di tutti i dati gestiti (aule, docenti, prenotazioni), salvato su file.\\
+Prenotazione: Assegnazione di un'aula a un docente responsabile per un'attività, in una data e in una fascia oraria.\\
+Fascia oraria: Intervallo compreso tra un'ora di inizio e un'ora di fine nella stessa data. L'ora di inizio è inclusa, l'ora di fine è esclusa: una prenotazione 9:00–11:00 occupa l'aula fino alle 11:00, ma non oltre.\\
+Serie (prenotazione ricorrente): Insieme di prenotazioni con gli stessi dati che si ripetono ogni settimana, nello stesso giorno e alla stessa ora, fino a una data di termine. Ogni prenotazione della serie è detta \textbf{occorrenza}.\\
+Sovrapposizione (conflitto): Due prenotazioni si sovrappongono se sono nella stessa data e le loro fasce orarie hanno almeno un istante in comune (vedi ED3.8).\\
+Prenotazione conclusa: Prenotazione la cui data e ora di fine è uguale o precedente al momento attuale.\\
+Prenotazione non conclusa: Prenotazione la cui data e ora di fine è successiva al momento attuale: comprende le prenotazioni \textbf{future} e quelle \textbf{in corso}.\\
+Cancellazione in cascata: Cancellazione di un'aula o di un docente insieme a tutte le prenotazioni che li riguardano.\\
+
