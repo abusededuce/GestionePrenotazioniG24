@@ -96,3 +96,75 @@ Punto di estensione: Passo 2: l'aula ha prenotazioni non concluse $\rightarrow$ 
 \item \textbf{5a.} Il salvataggio non riesce: si applica FC2.
 \end{itemize}
 
+\subsubsection{[UC1.4] CancellaPrenotazioniInCascata}
+\noindent Attore: Operatore\\
+Requisiti correlati: FI1.4, FI2.4, IU4.4, IU4.7, NF7\\
+Estende: UC1.3 CancellaAula e UC2.3 CancellaDocente, quando l'elemento da cancellare (aula o docente) ha prenotazioni non concluse.\\
+Pre-condizioni: L'Operatore ha chiesto di cancellare un'aula o un docente che ha almeno una prenotazione non conclusa.\\
+Post-condizioni: Se l'Operatore conferma: l'aula (o il docente) e \textbf{tutte} le sue prenotazioni, concluse e non concluse, sono rimosse dall'archivio e l'archivio è salvato su file. Se l'Operatore annulla: l'archivio è invariato.\\
+
+\noindent Flusso principale:
+\begin{enumerate}
+\item Il sistema mostra una finestra (IU4.4) che avvisa che l'elemento ha prenotazioni non concluse ed elenca, in ordine cronologico, le prenotazioni non concluse che verranno rimosse, con il loro numero totale.
+\item L'Operatore controlla l'elenco e conferma la cancellazione.
+\item Il sistema rimuove l'elemento e tutte le sue prenotazioni, salva l'archivio e mostra un messaggio di esito con il numero di prenotazioni rimosse.
+\end{enumerate}
+\noindent Flussi alternativi:
+\begin{itemize}
+\item \textbf{2a.} L'Operatore annulla: si applica FC1 (l'elemento e le sue prenotazioni restano nell'archivio).
+\item \textbf{3a.} Il salvataggio non riesce: si applica FC2.
+\end{itemize}
+
+\subsubsection{[UC1.5] VisualizzaAule}
+\noindent Attore: Operatore\\
+Requisiti correlati: FI1.5, IU1.1, IU4.1\\
+Pre-condizioni: Nessuna oltre alla precondizione comune.\\
+Post-condizioni: Il sistema mostra tutte le aule registrate ordinate per codice. L'archivio è invariato.\\
+
+\noindent Flusso principale:
+\begin{enumerate}
+\item L'Operatore apre la sezione Aule.
+\item Il sistema mostra la tabella di tutte le aule registrate, ordinate per codice, con codice, nome, edificio, piano e capienza.
+\end{enumerate}
+\noindent Flussi alternativi:
+\begin{itemize}
+\item \textbf{2a.} Non è registrata nessuna aula:
+\begin{itemize}
+\item 2a.1 Il sistema mostra la tabella vuota con il messaggio ``Nessuna aula registrata''.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{[UC1.6] CercaAula}
+\noindent Attore: Operatore\\
+Requisiti correlati: FI1.6, FI1.7, FI1.8, IU1.1, IU4.6\\
+Pre-condizioni: Il sistema mostra la sezione Aule.\\
+Post-condizioni: Il sistema mostra le aule che soddisfano il criterio scelto, ordinate per codice. L'archivio è invariato.\\
+
+\noindent Flusso principale:
+\begin{enumerate}
+\item L'Operatore sceglie il criterio di ricerca (nome, codice o capienza minima) e inserisce il valore.
+\item L'Operatore avvia la ricerca.
+\item Il sistema verifica che il valore sia valido per il criterio scelto.
+\item Il sistema mostra le aule che soddisfano il criterio, ordinate per codice:
+\begin{itemize}
+\item per \textbf{nome}: le aule il cui nome contiene il testo inserito, senza distinguere maiuscole e minuscole;
+\item per \textbf{codice}: l'aula con quel codice, senza distinguere maiuscole e minuscole;
+\item per \textbf{capienza minima}: le aule con capienza maggiore o uguale al valore inserito.
+\end{itemize}
+\end{enumerate}
+\noindent Flussi alternativi:
+\begin{itemize}
+\item \textbf{3a.} Il valore non è valido (testo vuoto; per la capienza minima, valore non intero o non positivo):
+\begin{itemize}
+\item 3a.1 Il sistema indica il problema;
+\item 3a.2 si riprende dal passo 1.
+\end{itemize}
+\item \textbf{4a.} Nessuna aula soddisfa il criterio:
+\begin{itemize}
+\item 4a.1 Il sistema mostra la tabella vuota con il messaggio ``Nessuna aula trovata''.
+\end{itemize}
+\item \textbf{4b.} L'Operatore sceglie di tornare alla lista completa:
+\begin{itemize}
+\item 4b.1 si esegue UC1.5 VisualizzaAule.
+\end{itemize}
+\end{itemize}
