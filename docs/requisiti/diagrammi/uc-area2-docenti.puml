@@ -1,0 +1,29 @@
+@startuml uc-area2-docenti
+!include _stile.iuml
+left to right direction
+title Area 2 - Gestione dei docenti
+
+actor Operatore
+
+rectangle "Sistema di prenotazione aule" {
+  usecase "UC2.1\nInserisciDocente" as UC21
+  usecase "UC2.2\nModificaDocente" as UC22
+  usecase "UC2.3\nCancellaDocente" as UC23
+  usecase "UC2.4\nVisualizzaDocenti" as UC24
+  usecase "UC2.5\nCercaDocente" as UC25
+  usecase "UC1.4\nCancellaPrenotazioniInCascata" as UC14
+}
+
+Operatore -- UC21
+Operatore -- UC22
+Operatore -- UC23
+Operatore -- UC24
+Operatore -- UC25
+
+UC23 <.. UC14 : <<extend>>
+note right of UC14
+  condizione: il docente ha
+  prenotazioni non concluse
+  (caso d'uso descritto nell'Area 1)
+end note
+@enduml
