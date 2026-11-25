@@ -1,0 +1,45 @@
+I vincoli imposti dalla traccia hanno priorità massima (MUST).
+
+\subsection{Vincoli tecnici e di processo}
+\subsubsection{[NF1] Linguaggio Java}
+L'applicazione è sviluppata in \textbf{Java}, versione \textbf{Java SE 8 (JDK 1.8)}.\\
+Categoria: Vincolo – tecnologia\\Priorità: MUST\\Fonte: Traccia (Java), gruppo (versione)
+
+\subsubsection{[NF2] Interfaccia grafica JavaFX}
+L'applicazione ha un'\textbf{interfaccia grafica} realizzata con \textbf{JavaFX}.\\
+Categoria: Vincolo – tecnologia\\Priorità: MUST\\Fonte: Traccia (GUI), gruppo (JavaFX)
+
+\subsubsection{[NF3] Compilazione con Maven}
+Il progetto si compila con \textbf{Maven}: \texttt{mvn compile} e \texttt{mvn test} funzionano su una copia appena clonata del repository; \texttt{mvn package} produce un pacchetto eseguibile.\\
+Categoria: Vincolo – build\\Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[NF4] Test automatizzati JUnit}
+Tutte le classi, tranne quelle dell'interfaccia utente, hanno \textbf{unit test automatizzati JUnit}, che devono essere tutti superati. I test coprono i valori limite e comprendono test di integrazione.\\
+Categoria: Vincolo – qualità\\Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[NF5] Documentazione Doxygen}
+Le interfacce pubbliche delle classi sono documentate con \textbf{Doxygen} e la documentazione si genera dal file di configurazione presente nel repository.\\
+Categoria: Vincolo – documentazione\\Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[NF6] Repository GitHub}
+Codice, test e documenti (requisiti e design, in sottocartelle) sono mantenuti in un \textbf{repository GitHub pubblicamente accessibile in lettura}.\\
+Categoria: Vincolo – processo\\Priorità: MUST\\Fonte: Traccia
+
+\subsection{Affidabilità}
+\subsubsection{[NF7] Integrità dell'archivio}
+\textbf{Integrità dell'archivio:} in ogni momento l'archivio non contiene prenotazioni sovrapposte per la stessa aula o per lo stesso docente, prenotazioni riferite ad aule o docenti non registrati, due aule con lo stesso codice o due docenti con la stessa e-mail.\\
+Categoria: Affidabilità\\Priorità: MUST\\Fonte: Traccia, C3
+
+\subsubsection{[NF8] Persistenza delle operazioni}
+Un'operazione confermata dall'Operatore non va persa se l'applicazione viene chiusa, anche in modo improvviso, dopo la conferma.\\
+Categoria: Affidabilità\\Priorità: SHOULD\\Fonte: C14
+
+\subsection{Prestazioni}
+\subsubsection{[NF9] Tempi di risposta}
+Con un archivio fino a 100 aule, 500 docenti e 20.000 prenotazioni, le operazioni di visualizzazione, ricerca e inserimento (compresa una serie di 20 occorrenze) si completano entro 1 secondo su un normale PC da ufficio.\\
+Categoria: Prestazioni\\Priorità: SHOULD\\Fonte: Proposta del gruppo
+
+\subsection{Portabilità}
+\subsubsection{[NF10] Portabilità}
+L'applicazione funziona su Windows, macOS e Linux, con un JDK 8 che includa JavaFX.\\
+Categoria: Portabilità\\Priorità: SHOULD\\Fonte: Proposta del gruppo
