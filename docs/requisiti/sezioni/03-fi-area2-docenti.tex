@@ -1,0 +1,28 @@
+\paragraph{Area 2 – Docenti}~\\
+\subsubsection{[FI2.1] Inserimento docente}
+L'Operatore deve poter inserire un nuovo docente specificandone e-mail istituzionale, nome e cognome.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia\\Stato: Accettato\\Caso d'uso: UC2.1
+
+\subsubsection{[FI2.2] Modifica docente}
+L'Operatore deve poter modificare nome e cognome di un docente esistente. L'e-mail non è modificabile.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia, C10\\Stato: Accettato\\Caso d'uso: UC2.2
+
+\subsubsection{[FI2.3] Cancellazione docente}
+L'Operatore deve poter cancellare, dopo una conferma, un docente privo di prenotazioni non concluse. Insieme al docente vengono cancellate le sue eventuali prenotazioni concluse.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia, C3\\Stato: Accettato\\Caso d'uso: UC2.3
+
+\subsubsection{[FI2.4] Cancellazione docente in cascata}
+Se il docente da cancellare ha prenotazioni non concluse, il sistema deve mostrarne l'elenco e chiedere un'ulteriore conferma. Se l'Operatore conferma, il docente e tutte le sue prenotazioni vengono cancellati in cascata; altrimenti nulla viene modificato.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: C3\\Stato: Accettato\\Caso d'uso: UC2.3, UC1.4
+
+\subsubsection{[FI2.5] Visualizzazione docenti}
+L'Operatore deve poter visualizzare la lista di tutti i docenti registrati, ordinata per cognome e, a parità di cognome, per nome (senza distinguere maiuscole e minuscole). A parità di cognome e nome l'ordine è dato dall'e-mail.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia\\Stato: Accettato\\Caso d'uso: UC2.4
+
+\subsubsection{[FI2.6] Ricerca docenti per cognome}
+L'Operatore deve poter cercare i docenti per cognome. Il risultato contiene i docenti il cui cognome contiene il testo inserito, senza distinguere maiuscole e minuscole, ordinati come in FI2.5.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia, C13\\Stato: Accettato\\Caso d'uso: UC2.5
+
+\subsubsection{[FI2.7] Ricerca docente per e-mail}
+L'Operatore deve poter cercare un docente per e-mail istituzionale (codice identificativo). Il risultato contiene il docente con quell'e-mail esatta, senza distinguere maiuscole e minuscole.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia, C2, C13\\Stato: Accettato\\Caso d'uso: UC2.5
