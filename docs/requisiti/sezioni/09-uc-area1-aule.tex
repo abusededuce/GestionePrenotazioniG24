@@ -40,13 +40,13 @@ Post-condizioni: La nuova aula è registrata nell'archivio, l'archivio è salvat
 \noindent Attore: Operatore\\
 Requisiti correlati: FI1.2, ED1.1–ED1.4, IU1.1, IU1.2, IU4.6, IU4.7\\
 Pre-condizioni: Il sistema mostra la sezione Aule e nell'archivio è registrata almeno un'aula.\\
-Post-condizioni: I dati dell'aula sono aggiornati nell'archivio, l'archivio è salvato su file e la lista mostra i nuovi valori. Codice e prenotazioni dell'aula non cambiano.\\
+Post-condizioni: I dati dell'aula sono aggiornati nell'archivio, l'archivio è salvato su file e la lista mostra i nuovi valori; codice e prenotazioni dell'aula non cambiano.\\
 
 \noindent Flusso principale:
 \begin{enumerate}
 \item L'Operatore seleziona un'aula nella lista (o tra i risultati di una ricerca) e sceglie il comando Modifica.
 \item Il sistema mostra il modulo dell'aula con i dati attuali; il codice è visibile ma non modificabile.
-\item L'Operatore modifica uno o più campi tra nome, edificio, piano e capienza e conferma.
+\item L'Operatore modifica uno o più campi tra edificio, piano, nome e capienza e poi conferma.
 \item Il sistema verifica che i dati rispettino i vincoli ED1.1, ED1.3 ed ED1.4.
 \item Il sistema aggiorna l'aula, salva l'archivio, chiude il modulo e mostra la lista aggiornata con un messaggio di esito.
 \end{enumerate}
