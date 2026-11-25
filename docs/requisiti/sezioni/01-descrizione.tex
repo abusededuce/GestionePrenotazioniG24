@@ -60,3 +60,39 @@ C17 & ``Filtrandole per aula o docente'' & I due filtri si possono usare \textbf
 C18 & Durata minima di una serie & La data di termine di una serie deve essere almeno \textbf{7 giorni} dopo la data della prima occorrenza, così la serie ha almeno due occorrenze. Per una sola data si usa la prenotazione singola. \\ \hline
 \end{longtable}
 
+\subsection{Codifica e priorità dei requisiti}
+Ogni requisito ha un \textbf{codice univoco} formato da un prefisso, che ne indica la categoria, e da un numero:
+
+\begin{center}
+\begin{tabular}{|l|l|l|}\hline
+\textbf{Area dei requisiti} & \textbf{Prefisso} & \textbf{Numerazione} \\ \hline
+Business flow & BF & BF1, BF2, \dots{} \\ \hline
+Funzionalità individuale & FI & FI1.1, FI1.2, FI2.1, \dots{} \\ \hline
+Esigenza di dati e informazioni & ED & ED1.1, ED1.2, ED2.1, \dots{} \\ \hline
+Interfaccia utente & IU & IU1.1, IU1.2, IU2.1, \dots{} \\ \hline
+Interfaccia con sistemi esterni & IS & IS1, IS2, \dots{} \\ \hline
+Requisito non funzionale & NF & NF1, NF2, \dots{} \\ \hline
+\end{tabular}
+\end{center}
+Per FI, ED e IU la prima cifra indica l'\textbf{area funzionale} a cui il requisito appartiene. I casi d'uso (UC) seguono la stessa numerazione:
+
+\begin{center}
+\begin{tabular}{|c|P{9cm}|}\hline
+\textbf{N.} & \textbf{Area funzionale} \\ \hline
+1 & Aule \\ \hline
+2 & Docenti \\ \hline
+3 & Inserimento delle prenotazioni \\ \hline
+4 & Consultazione e cancellazione delle prenotazioni, archivio e aspetti comuni \\ \hline
+\end{tabular}
+\end{center}
+La \textbf{priorità} è assegnata in base al valore per l'utente (business value):
+
+\begin{center}
+\begin{tabular}{|P{2.1cm}|P{4.3cm}|P{4.3cm}|}\hline
+\textbf{Priorità} & \textbf{Significato} & \textbf{Criterio adottato} \\ \hline
+MUST HAVE & Senza questo requisito il sistema è inutilizzabile o non rispetta la traccia. & Funzionalità e vincoli richiesti dalla traccia, più le regole indispensabili per realizzarli in modo coerente. \\ \hline
+SHOULD HAVE & Importante, ma la sua assenza non rende il sistema un fallimento. & Usabilità, robustezza e qualità aggiunte dal gruppo. \\ \hline
+NICE TO HAVE & Da realizzare solo se costa poco. & Funzionalità non richieste dalla traccia, proposte dal gruppo. \\ \hline
+\end{tabular}
+\end{center}
+Per le funzionalità individuali si indica anche il \textbf{rischio tecnico} (Basso, Medio, Alto), cioè la difficoltà prevista nel realizzarle. La voce \textbf{Fonte} indica da dove nasce il requisito: la traccia del progetto oppure uno dei chiarimenti C1–C18. La voce \textbf{Stato} indica se il requisito è accettato per questa versione o rimandato.
