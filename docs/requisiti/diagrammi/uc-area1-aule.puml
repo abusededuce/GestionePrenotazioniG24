@@ -1,0 +1,29 @@
+@startuml uc-area1-aule
+!include _stile.iuml
+left to right direction
+title Area 1 - Gestione delle aule
+
+actor Operatore
+
+rectangle "Sistema di prenotazione aule" {
+  usecase "UC1.1\nInserisciAula" as UC11
+  usecase "UC1.2\nModificaAula" as UC12
+  usecase "UC1.3\nCancellaAula" as UC13
+  usecase "UC1.4\nCancellaPrenotazioniInCascata" as UC14
+  usecase "UC1.5\nVisualizzaAule" as UC15
+  usecase "UC1.6\nCercaAula" as UC16
+}
+
+Operatore -- UC11
+Operatore -- UC12
+Operatore -- UC13
+Operatore -- UC15
+Operatore -- UC16
+
+UC13 <.. UC14 : <<extend>>
+note right of UC14
+  condizione: l'aula ha
+  prenotazioni non concluse
+  (estende anche UC2.3 CancellaDocente)
+end note
+@enduml
