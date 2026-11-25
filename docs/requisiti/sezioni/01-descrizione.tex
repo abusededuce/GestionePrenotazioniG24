@@ -34,3 +34,29 @@ Prenotazione conclusa: Prenotazione la cui data e ora di fine è uguale o preced
 Prenotazione non conclusa: Prenotazione la cui data e ora di fine è successiva al momento attuale: comprende le prenotazioni \textbf{future} e quelle \textbf{in corso}.\\
 Cancellazione in cascata: Cancellazione di un'aula o di un docente insieme a tutte le prenotazioni che li riguardano.\\
 
+\subsection{Chiarimenti sulla traccia}
+La descrizione informale delle funzionalità presenta alcune ambiguità e lacune. Il gruppo le ha risolte con le seguenti decisioni, citate come \textbf{fonte} dei requisiti che ne derivano.
+
+\begin{longtable}{|l|P{3.0cm}|P{7.2cm}|}\hline
+\textbf{ID} & \textbf{Punto della traccia} & \textbf{Decisione del gruppo} \\ \hline
+\endhead
+C1 & Chi usa il sistema? & Un solo attore, l'\textbf{Operatore} della segreteria. I docenti sono dati e non utenti: non sono previsti login né ruoli. \\ \hline
+C2 & ``Cercare un utente per cognome o codice identificativo'' & ``Utente'' indica il \textbf{docente}. Il suo \textbf{codice identificativo} è l'\textbf{e-mail istituzionale}, che la traccia definisce univoca. Non si aggiungono altri codici (es. matricola). \\ \hline
+C3 & Cosa succede cancellando un'aula o un docente che ha prenotazioni? & Se l'aula (o il docente) \textbf{non} ha prenotazioni non concluse, viene cancellata dopo una normale conferma, insieme alle eventuali prenotazioni concluse. Se \textbf{ha} prenotazioni non concluse, il sistema mostra l'elenco delle prenotazioni che verrebbero rimosse e chiede un'ulteriore conferma; se l'Operatore conferma, l'aula (o il docente) e tutte le sue prenotazioni vengono cancellate in cascata. \\ \hline
+C4 & ``Cancellare tutte le prenotazioni future di una serie ricorrente'' & Si cancellano l'\textbf{occorrenza selezionata e tutte le successive} della stessa serie. Le occorrenze precedenti restano. \\ \hline
+C5 & Serie ricorrente in cui solo alcune occorrenze sono in conflitto & Il sistema mostra le date in conflitto e il motivo, poi \textbf{chiede all'Operatore} se salvare solo le occorrenze libere, modificare i dati o annullare. \\ \hline
+C6 & Modifica di una prenotazione esistente & Non richiesta dalla traccia e \textbf{non prevista} in questa versione. Per cambiare una prenotazione la si cancella e la si reinserisce. È registrata come possibile sviluppo futuro (FI4.6, stato ``Rimandato''). \\ \hline
+C7 & Prenotazioni consecutive & Sono \textbf{ammesse}: una prenotazione che termina alle 11:00 e una che inizia alle 11:00 non si sovrappongono. \\ \hline
+C8 & Durata di una prenotazione & Una prenotazione \textbf{inizia e finisce nella stessa data} e l'ora di fine è successiva all'ora di inizio. \\ \hline
+C9 & Prenotazioni nel passato & \textbf{Non ammesse}: data e ora di inizio non possono precedere il momento dell'inserimento. \\ \hline
+C10 & Modifica delle chiavi & Il \textbf{codice dell'aula} e l'\textbf{e-mail del docente} non sono modificabili dopo l'inserimento. \\ \hline
+C11 & Uso della capienza & La capienza è un dato informativo usato \textbf{solo nella ricerca delle aule}. Le prenotazioni non registrano il numero di partecipanti. \\ \hline
+C12 & Tipo di attività & Si sceglie da un \textbf{elenco chiuso}: Lezione, Esame, Seminario, Altro. \\ \hline
+C13 & Criteri di ricerca & Le ricerche per \textbf{nome} dell'aula e per \textbf{cognome} del docente trovano anche corrispondenze \textbf{parziali} e non distinguono tra maiuscole e minuscole. Le ricerche per \textbf{codice} dell'aula e per \textbf{e-mail} del docente sono \textbf{esatte} (sempre senza distinguere maiuscole e minuscole). \\ \hline
+C14 & Momento del salvataggio & L'archivio viene \textbf{salvato automaticamente} su file dopo ogni operazione che modifica i dati. Non esiste un comando ``Salva''. \\ \hline
+C15 & E-mail istituzionale & L'e-mail di un docente deve appartenere al \textbf{dominio istituzionale \texttt{unisa.it}}. \\ \hline
+C16 & Cancellazione di prenotazioni concluse & Si possono cancellare solo prenotazioni \textbf{non concluse}: quelle concluse costituiscono lo storico dell'aula e del docente. \\ \hline
+C17 & ``Filtrandole per aula o docente'' & I due filtri si possono usare \textbf{separatamente o insieme}. Usati insieme, si mostrano le prenotazioni che soddisfano entrambi. \\ \hline
+C18 & Durata minima di una serie & La data di termine di una serie deve essere almeno \textbf{7 giorni} dopo la data della prima occorrenza, così la serie ha almeno due occorrenze. Per una sola data si usa la prenotazione singola. \\ \hline
+\end{longtable}
+
