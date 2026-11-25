@@ -1,0 +1,32 @@
+\paragraph{Area 1 – Aule}~\\
+\subsubsection{[FI1.1] Inserimento aula}
+L'Operatore deve poter inserire una nuova aula specificandone codice, nome, edificio, piano e capienza.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia\\Stato: Accettato\\Caso d'uso: UC1.1
+
+\subsubsection{[FI1.2] Modifica aula}
+L'Operatore deve poter modificare nome, edificio, piano e capienza di un'aula esistente. Il codice non è modificabile.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia, C10\\Stato: Accettato\\Caso d'uso: UC1.2
+
+\subsubsection{[FI1.3] Cancellazione aula}
+L'Operatore deve poter cancellare, dopo una conferma, un'aula priva di prenotazioni non concluse. Insieme all'aula vengono cancellate le sue eventuali prenotazioni concluse.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia, C3\\Stato: Accettato\\Caso d'uso: UC1.3
+
+\subsubsection{[FI1.4] Cancellazione aula in cascata}
+Se l'aula da cancellare ha prenotazioni non concluse, il sistema deve mostrarne l'elenco e chiedere un'ulteriore conferma. Se l'Operatore conferma, l'aula e tutte le sue prenotazioni vengono cancellate in cascata; altrimenti nulla viene modificato.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: C3\\Stato: Accettato\\Caso d'uso: UC1.3, UC1.4
+
+\subsubsection{[FI1.5] Visualizzazione aule}
+L'Operatore deve poter visualizzare la lista di tutte le aule registrate, ordinata per codice.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia\\Stato: Accettato\\Caso d'uso: UC1.5
+
+\subsubsection{[FI1.6] Ricerca aule per nome}
+L'Operatore deve poter cercare le aule per nome. Il risultato contiene le aule il cui nome contiene il testo inserito, senza distinguere maiuscole e minuscole.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia, C13\\Stato: Accettato\\Caso d'uso: UC1.6
+
+\subsubsection{[FI1.7] Ricerca aula per codice}
+L'Operatore deve poter cercare un'aula per codice. Il risultato contiene l'aula con quel codice esatto, senza distinguere maiuscole e minuscole.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia, C13\\Stato: Accettato\\Caso d'uso: UC1.6
+
+\subsubsection{[FI1.8] Ricerca aule per capienza minima}
+L'Operatore deve poter cercare le aule per capienza minima. Il risultato contiene le aule con capienza maggiore o uguale al valore inserito.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia\\Stato: Accettato\\Caso d'uso: UC1.6
