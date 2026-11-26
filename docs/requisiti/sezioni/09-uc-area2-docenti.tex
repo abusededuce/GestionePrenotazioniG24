@@ -95,3 +95,56 @@ Punto di estensione: Passo 2: il docente ha prenotazioni non concluse $\rightarr
 \item \textbf{4a.} L'Operatore annulla: si applica FC1.
 \item \textbf{5a.} Il salvataggio non riesce: si applica FC2.
 \end{itemize}
+
+\subsubsection{[UC2.4] VisualizzaDocenti}
+\noindent Attore: Operatore\\
+Requisiti correlati: FI2.5, IU2.1, IU4.1\\
+Pre-condizioni: Nessuna oltre alla precondizione comune.\\
+Post-condizioni: Il sistema mostra tutti i docenti registrati ordinati per cognome e nome. L'archivio è invariato.\\
+
+\noindent Flusso principale:
+\begin{enumerate}
+\item L'Operatore apre la sezione Docenti.
+\item Il sistema mostra la tabella di tutti i docenti registrati, con cognome, nome ed e-mail, ordinati per cognome, poi per nome, poi per e-mail (FI2.5).
+\end{enumerate}
+\noindent Flussi alternativi:
+\begin{itemize}
+\item \textbf{2a.} Non è registrato nessun docente:
+\begin{itemize}
+\item 2a.1 Il sistema mostra la tabella vuota con il messaggio ``Nessun docente registrato''.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{[UC2.5] CercaDocente}
+\noindent Attore: Operatore\\
+Requisiti correlati: FI2.6, FI2.7, IU2.1, IU4.6\\
+Pre-condizioni: Il sistema mostra la sezione Docenti.\\
+Post-condizioni: Il sistema mostra i docenti che soddisfano il criterio scelto, ordinati come in FI2.5. L'archivio è invariato.\\
+
+\noindent Flusso principale:
+\begin{enumerate}
+\item L'Operatore sceglie il criterio di ricerca (cognome o e-mail) e inserisce il valore.
+\item L'Operatore avvia la ricerca.
+\item Il sistema verifica che il valore non sia vuoto.
+\item Il sistema mostra i docenti che soddisfano il criterio:
+\begin{itemize}
+\item per \textbf{cognome}: i docenti il cui cognome contiene il testo inserito, senza distinguere maiuscole e minuscole;
+\item per \textbf{e-mail}: il docente con quell'e-mail, senza distinguere maiuscole e minuscole.
+\end{itemize}
+\end{enumerate}
+\noindent Flussi alternativi:
+\begin{itemize}
+\item \textbf{3a.} Il valore è vuoto:
+\begin{itemize}
+\item 3a.1 Il sistema chiede di inserire un valore;
+\item 3a.2 si riprende dal passo 1.
+\end{itemize}
+\item \textbf{4a.} Nessun docente soddisfa il criterio:
+\begin{itemize}
+\item 4a.1 Il sistema mostra la tabella vuota con il messaggio ``Nessun docente trovato''.
+\end{itemize}
+\item \textbf{4b.} L'Operatore sceglie di tornare alla lista completa:
+\begin{itemize}
+\item 4b.1 si esegue UC2.4 VisualizzaDocenti.
+\end{itemize}
+\end{itemize}
