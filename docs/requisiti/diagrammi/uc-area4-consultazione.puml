@@ -1,0 +1,23 @@
+@startuml uc-area4-consultazione
+!include _stile.iuml
+left to right direction
+title Area 4 - Consultazione e cancellazione delle prenotazioni
+
+actor Operatore
+
+rectangle "Sistema di prenotazione aule" {
+  usecase "UC4.1\nVisualizzaPrenotazioni" as UC41
+  usecase "UC4.2\nCancellaPrenotazione" as UC42
+  usecase "UC4.3\nCancellaOccorrenzeSuccessive" as UC43
+}
+
+Operatore -- UC41
+Operatore -- UC42
+
+UC42 <.. UC43 : <<extend>>
+note right of UC43
+  condizione: la prenotazione appartiene
+  a una serie e l'Operatore sceglie di
+  cancellare anche le occorrenze successive
+end note
+@enduml
