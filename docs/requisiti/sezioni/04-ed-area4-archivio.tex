@@ -1,0 +1,20 @@
+\paragraph{Area 4 – Archivio}~\\
+\subsubsection{[ED4.1] File dell'archivio}
+L'archivio (aule, docenti e prenotazioni, comprese quelle concluse) è salvato su un file locale.\\
+Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[ED4.2] Caricamento all'avvio}
+All'avvio il sistema carica automaticamente l'archivio dal file. Se il file non esiste, il sistema parte con un archivio vuoto e crea il file al primo salvataggio.\\
+Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[ED4.3] Salvataggio automatico}
+Dopo ogni operazione che modifica l'archivio (inserimento, modifica, cancellazione) il sistema salva automaticamente l'archivio su file.\\
+Priorità: MUST\\Fonte: C14
+
+\subsubsection{[ED4.4] Errore di salvataggio}
+Se il salvataggio su file non riesce, l'archivio resta come prima dell'operazione e il sistema mostra un messaggio di errore.\\
+Priorità: SHOULD\\Fonte: Proposta del gruppo
+
+\subsubsection{[ED4.5] File danneggiato}
+Se all'avvio il file esiste ma non è leggibile o è danneggiato, il sistema mostra un messaggio di errore che indica il problema e termina senza modificare il file\\
+Priorità: SHOULD\\Fonte: Proposta del gruppo

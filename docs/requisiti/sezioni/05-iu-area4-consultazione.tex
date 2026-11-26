@@ -1,0 +1,32 @@
+\paragraph{Area 4 – Consultazione, cancellazione e aspetti comuni}~\\
+\subsubsection{[IU4.1] Finestra principale}
+La finestra principale è divisa in tre sezioni: Aule, Docenti e Prenotazioni, dalla sezione Prenotazioni si accede alla funzione Nuova prenotazione e a Ricerca aule disponibili.\\
+Priorità: SHOULD\\Fonte: Proposta del gruppo
+
+\subsubsection{[IU4.2] Sezione Prenotazioni}
+La sezione Prenotazioni mostra una tabella con colonne data, ora di inizio, ora di fine, aula, docente, tipo, denominazione e indicazione ``ricorrente''; due filtri (aula e docente) con scelta da elenco e un comando per rimuovere i filtri.\\
+Priorità: SHOULD\\Fonte: Traccia
+
+\subsubsection{[IU4.3] Conferma delle cancellazioni}
+Prima di ogni cancellazione (aula, docente, prenotazione) il sistema chiede conferma mostrando i dati dell'elemento da cancellare.\\
+Priorità: SHOULD\\Fonte: Proposta del gruppo
+
+\subsubsection{[IU4.4] Finestra della cancellazione in cascata}
+Per la cancellazione in cascata (FI1.4, FI2.4) il sistema mostra una finestra con l'elenco delle prenotazioni non concluse che verranno rimosse (data, orari, aula, docente, tipo, denominazione), in ordine cronologico, con il numero totale, e i comandi Conferma e Annulla.\\
+Priorità: MUST\\Fonte: C3
+
+\subsubsection{[IU4.5] Cancellazione di un'occorrenza}
+Quando si cancella un'occorrenza di una serie, il sistema chiede di scegliere tra ``Solo questa occorrenza'' e ``Questa e tutte le successive''.\\
+Priorità: MUST\\Fonte: Traccia, C4
+
+\subsubsection{[IU4.6] Dati non validi}
+In caso di dati non validi, viene mostrato quale parte è sbagliata e vengono indicati i vincoli non rispettati.\\
+Priorità: SHOULD\\Fonte: Proposta del gruppo
+
+\subsubsection{[IU4.7] Messaggio di esito}
+Dopo ogni operazione che modifica l'archivio il sistema mostra un breve messaggio con l'esito.\\
+Priorità: SHOULD\\Fonte: Proposta del gruppo
+
+\subsubsection{[IU4.8] Lingua e formati}
+L'interfaccia è in lingua italiana; le date sono mostrate nel formato gg/mm/aaaa e gli orari nel formato ore:min (24 ore).\\
+Priorità: SHOULD\\Fonte: Proposta del gruppo
