@@ -1,0 +1,32 @@
+\paragraph{Area 3 – Dati delle prenotazioni}~\\
+\subsubsection{[ED3.1] Dati della prenotazione}
+Per ogni prenotazione il sistema registra: \textbf{aula}, \textbf{docente responsabile}, \textbf{tipo di attività}, \textbf{denominazione} dell'attività, \textbf{data}, \textbf{ora di inizio} e \textbf{ora di fine}. Tutti i dati sono obbligatori; la denominazione non può essere vuota.\\
+Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[ED3.2] Aula e docente registrati}
+L'aula e il docente di una prenotazione devono essere registrati nell'archivio.\\
+Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[ED3.3] Tipo di attività}
+Il tipo di attività assume uno dei valori: \textbf{Lezione}, \textbf{Esame}, \textbf{Seminario}, \textbf{Altro}.\\
+Priorità: MUST\\Fonte: Traccia, C12
+
+\subsubsection{[ED3.4] Orari della prenotazione}
+Ora di inizio e ora di fine sono espresse in ore e minuti e appartengono alla stessa data. L'ora di fine è successiva all'ora di inizio.\\
+Priorità: MUST\\Fonte: C8
+
+\subsubsection{[ED3.5] Prenotazioni nel passato}
+Al momento dell'inserimento, data e ora di inizio non possono precedere il momento attuale.\\
+Priorità: MUST\\Fonte: C9
+
+\subsubsection{[ED3.6] Ricorrenza settimanale}
+Una prenotazione ricorrente registra anche la \textbf{data di termine}. Le occorrenze cadono nello stesso giorno della settimana della prima, con gli stessi orari, ogni 7 giorni, fino alla data di termine inclusa. La data di termine deve essere almeno 7 giorni dopo la data della prima occorrenza.\\
+Priorità: MUST\\Fonte: Traccia, C18
+
+\subsubsection{[ED3.7] Identificativo di serie}
+Le occorrenze di una stessa serie condividono un \textbf{identificativo di serie}. Ogni occorrenza è una prenotazione a tutti gli effetti: viene visualizzata e controllata singolarmente.\\
+Priorità: MUST\\Fonte: Traccia, C4
+
+\subsubsection{[ED3.8] Definizione di sovrapposizione}
+Due prenotazioni A e B si \textbf{sovrappongono} se hanno la stessa data e \texttt{inizioA \textless{} fineB} e \texttt{inizioB \textless{} fineA}. Ne segue che prenotazioni consecutive (fine di A = inizio di B) non si sovrappongono.\\
+Priorità: MUST\\Fonte: Traccia, C7
