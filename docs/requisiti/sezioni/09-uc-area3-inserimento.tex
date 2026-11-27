@@ -117,3 +117,53 @@ Post-condizioni: Tutte le occorrenze della serie sono registrate nell'archivio c
 \item \textbf{7b.} Il salvataggio non riesce: si applica FC2.
 \end{itemize}
 
+\subsubsection{[UC3.4] VerificaSovrapposizioni}
+\noindent Attore: — (caso d'uso incluso da UC3.2 e UC3.3; non è avviato direttamente dall'Operatore)\\
+Requisiti correlati: FI3.4, FI3.5, ED3.8, NF7\\
+Pre-condizioni: Sono disponibili i dati validi di una o più prenotazioni da inserire (aula, docente, data, ora di inizio, ora di fine).\\
+Post-condizioni: È disponibile l'elenco dei conflitti trovati (vuoto se non ce ne sono); per ogni conflitto: data, motivo e prenotazione esistente coinvolta. L'archivio è invariato.\\
+
+\noindent Flusso principale:
+\begin{enumerate}
+\item Per ogni prenotazione da inserire, il sistema cerca nell'archivio le prenotazioni della stessa data la cui fascia oraria si sovrappone (ED3.8).
+\item Per ciascuna prenotazione sovrapposta, se riguarda la stessa aula il sistema registra un conflitto con motivo ``aula occupata'' (FI3.4).
+\item Per ciascuna prenotazione sovrapposta, se riguarda lo stesso docente il sistema registra un conflitto con motivo ``docente impegnato'' (FI3.5).
+\item Il sistema restituisce l'elenco dei conflitti al caso d'uso che lo ha incluso.
+\end{enumerate}
+\noindent Flussi alternativi:
+\begin{itemize}
+\item \textbf{2a.} Una prenotazione sovrapposta riguarda sia la stessa aula sia lo stesso docente:
+\begin{itemize}
+\item 2a.1 il conflitto viene registrato con entrambi i motivi.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{[UC3.5] GestisciConflittiSerie}
+\noindent Attore: Operatore\\
+Requisiti correlati: FI3.6, IU3.3, IU4.7, ED3.7, NF7\\
+Estende: UC3.3 InserisciPrenotazioneRicorrente, quando almeno un'occorrenza della serie è in conflitto.\\
+Pre-condizioni: UC3.4 ha trovato conflitti per almeno un'occorrenza della serie che l'Operatore sta inserendo.\\
+Post-condizioni: Se l'Operatore sceglie di salvare le date libere: le sole occorrenze senza conflitti sono registrate con lo stesso identificativo di serie e l'archivio è salvato su file. Negli altri casi l'archivio è invariato.\\
+
+\noindent Flusso principale:
+\begin{enumerate}
+\item Il sistema mostra la finestra dei conflitti (IU3.3): numero di occorrenze in conflitto sul totale e, per ogni occorrenza in conflitto, data, motivo e prenotazione esistente.
+\item Il sistema propone le scelte ``Salva solo le date libere'', ``Modifica dati'' e ``Annulla''.
+\item L'Operatore sceglie ``Salva solo le date libere''.
+\item Il sistema registra le occorrenze senza conflitti con un nuovo identificativo di serie, salva l'archivio, chiude il modulo e mostra un messaggio con il numero di occorrenze create e le date saltate.
+\end{enumerate}
+\noindent Flussi alternativi:
+\begin{itemize}
+\item \textbf{2a.} Tutte le occorrenze sono in conflitto:
+\begin{itemize}
+\item 2a.1 Il sistema propone solo ``Modifica dati'' e ``Annulla'';
+\item 2a.2 si prosegue dal passo 3 con una di queste due scelte.
+\end{itemize}
+\item \textbf{3a.} L'Operatore sceglie ``Modifica dati'':
+\begin{itemize}
+\item 3a.1 Il sistema chiude la finestra dei conflitti e torna al modulo di prenotazione con i dati già inseriti;
+\item 3a.2 si riprende dal passo 3 di UC3.3.
+\end{itemize}
+\item \textbf{3b.} L'Operatore sceglie ``Annulla'': si applica FC1.
+\item \textbf{4a.} Il salvataggio non riesce: si applica FC2.
+\end{itemize}
