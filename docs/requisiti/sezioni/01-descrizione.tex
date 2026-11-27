@@ -1,0 +1,98 @@
+
+\subsection{Scopo}
+L'applicazione permette alla segreteria di un dipartimento universitario di gestire le \textbf{aule}, i \textbf{docenti} e le \textbf{prenotazioni delle aule} (lezioni, esami, seminari e altre attività). Lo scopo principale è evitare che un'aula venga assegnata contemporaneamente a più attività e che un docente risulti impegnato contemporaneamente in più aule. Tutti i dati vengono conservati in un archivio salvato su file, così da essere disponibili a ogni avvio dell'applicazione.
+
+\subsection{Funzionalità principali}
+\begin{itemize}
+\item \textbf{Gestione delle aule:} inserimento, modifica e cancellazione delle aule; visualizzazione della lista; ricerca per nome, codice o capienza minima.
+\item \textbf{Gestione dei docenti:} inserimento, modifica e cancellazione dei docenti; visualizzazione della lista ordinata per cognome e nome; ricerca per cognome o per e-mail istituzionale.
+\item \textbf{Inserimento delle prenotazioni:} ricerca delle aule disponibili in una data e fascia oraria; inserimento di prenotazioni singole o con ricorrenza settimanale, con controllo automatico delle sovrapposizioni.
+\item \textbf{Consultazione e cancellazione delle prenotazioni:} visualizzazione delle prenotazioni in ordine cronologico, con filtro per aula e/o per docente; cancellazione di una singola prenotazione oppure di un'occorrenza e di tutte le successive della stessa serie.
+\item \textbf{Archivio su file:} caricamento automatico all'avvio e salvataggio automatico dopo ogni modifica.
+\end{itemize}
+
+\subsection{Attori}
+\begin{itemize}
+\item Operatore: Addetto della segreteria del dipartimento che usa l'applicazione tramite l'interfaccia grafica. È l'unico attore del sistema: esegue tutte le operazioni su aule, docenti e prenotazioni.
+\end{itemize}
+I \textbf{docenti} non sono utenti del sistema: sono dati gestiti dall'Operatore (vedi chiarimento C1).
+
+\subsection{Assunzioni}
+\begin{itemize}
+\item \textbf{A1.} L'applicazione è usata da un solo Operatore alla volta, su una singola postazione. L'accesso contemporaneo di più utenti allo stesso archivio non è previsto.
+\item \textbf{A2.} L'applicazione non richiede autenticazione: chi la avvia è autorizzato a usarla.
+\item \textbf{A3.} Data e ora di riferimento (``adesso'') sono quelle del computer su cui l'applicazione è in esecuzione.
+\end{itemize}
+
+\subsection{Glossario}
+Archivio: Insieme di tutti i dati gestiti (aule, docenti, prenotazioni), salvato su file.\\
+Prenotazione: Assegnazione di un'aula a un docente responsabile per un'attività, in una data e in una fascia oraria.\\
+Fascia oraria: Intervallo compreso tra un'ora di inizio e un'ora di fine nella stessa data. L'ora di inizio è inclusa, l'ora di fine è esclusa: una prenotazione 9:00–11:00 occupa l'aula fino alle 11:00, ma non oltre.\\
+Serie (prenotazione ricorrente): Insieme di prenotazioni con gli stessi dati che si ripetono ogni settimana, nello stesso giorno e alla stessa ora, fino a una data di termine. Ogni prenotazione della serie è detta \textbf{occorrenza}.\\
+Sovrapposizione (conflitto): Due prenotazioni si sovrappongono se sono nella stessa data e le loro fasce orarie hanno almeno un istante in comune (vedi ED3.8).\\
+Prenotazione conclusa: Prenotazione la cui data e ora di fine è uguale o precedente al momento attuale.\\
+Prenotazione non conclusa: Prenotazione la cui data e ora di fine è successiva al momento attuale: comprende le prenotazioni \textbf{future} e quelle \textbf{in corso}.\\
+Cancellazione in cascata: Cancellazione di un'aula o di un docente insieme a tutte le prenotazioni che li riguardano.\\
+
+\subsection{Chiarimenti sulla traccia}
+La descrizione informale delle funzionalità presenta alcune ambiguità e lacune. Il gruppo le ha risolte con le seguenti decisioni, citate come \textbf{fonte} dei requisiti che ne derivano.
+
+\begin{longtable}{|l|P{3.0cm}|P{7.2cm}|}\hline
+\textbf{ID} & \textbf{Punto della traccia} & \textbf{Decisione del gruppo} \\ \hline
+\endhead
+C1 & Chi usa il sistema? & Un solo attore, l'\textbf{Operatore} della segreteria. I docenti sono dati e non utenti: non sono previsti login né ruoli. \\ \hline
+C2 & ``Cercare un utente per cognome o codice identificativo'' & ``Utente'' indica il \textbf{docente}. Il suo \textbf{codice identificativo} è l'\textbf{e-mail istituzionale}, che la traccia definisce univoca. Non si aggiungono altri codici (es. matricola). \\ \hline
+C3 & Cosa succede cancellando un'aula o un docente che ha prenotazioni? & Se l'aula (o il docente) \textbf{non} ha prenotazioni non concluse, viene cancellata dopo una normale conferma, insieme alle eventuali prenotazioni concluse. Se \textbf{ha} prenotazioni non concluse, il sistema mostra l'elenco delle prenotazioni che verrebbero rimosse e chiede un'ulteriore conferma; se l'Operatore conferma, l'aula (o il docente) e tutte le sue prenotazioni vengono cancellate in cascata. \\ \hline
+C4 & ``Cancellare tutte le prenotazioni future di una serie ricorrente'' & Si cancellano l'\textbf{occorrenza selezionata e tutte le successive} della stessa serie. Le occorrenze precedenti restano. \\ \hline
+C5 & Serie ricorrente in cui solo alcune occorrenze sono in conflitto & Il sistema mostra le date in conflitto e il motivo, poi \textbf{chiede all'Operatore} se salvare solo le occorrenze libere, modificare i dati o annullare. \\ \hline
+C6 & Modifica di una prenotazione esistente & Non richiesta dalla traccia e \textbf{non prevista} in questa versione. Per cambiare una prenotazione la si cancella e la si reinserisce. È registrata come possibile sviluppo futuro (FI4.6, stato ``Rimandato''). \\ \hline
+C7 & Prenotazioni consecutive & Sono \textbf{ammesse}: una prenotazione che termina alle 11:00 e una che inizia alle 11:00 non si sovrappongono. \\ \hline
+C8 & Durata di una prenotazione & Una prenotazione \textbf{inizia e finisce nella stessa data} e l'ora di fine è successiva all'ora di inizio. \\ \hline
+C9 & Prenotazioni nel passato & \textbf{Non ammesse}: data e ora di inizio non possono precedere il momento dell'inserimento. \\ \hline
+C10 & Modifica delle chiavi & Il \textbf{codice dell'aula} e l'\textbf{e-mail del docente} non sono modificabili dopo l'inserimento. \\ \hline
+C11 & Uso della capienza & La capienza è un dato informativo usato \textbf{solo nella ricerca delle aule}. Le prenotazioni non registrano il numero di partecipanti. \\ \hline
+C12 & Tipo di attività & Si sceglie da un \textbf{elenco chiuso}: Lezione, Esame, Seminario, Altro. \\ \hline
+C13 & Criteri di ricerca & Le ricerche per \textbf{nome} dell'aula e per \textbf{cognome} del docente trovano anche corrispondenze \textbf{parziali} e non distinguono tra maiuscole e minuscole. Le ricerche per \textbf{codice} dell'aula e per \textbf{e-mail} del docente sono \textbf{esatte} (sempre senza distinguere maiuscole e minuscole). \\ \hline
+C14 & Momento del salvataggio & L'archivio viene \textbf{salvato automaticamente} su file dopo ogni operazione che modifica i dati. Non esiste un comando ``Salva''. \\ \hline
+C15 & E-mail istituzionale & L'e-mail di un docente deve appartenere al \textbf{dominio istituzionale \texttt{unisa.it}}. \\ \hline
+C16 & Cancellazione di prenotazioni concluse & Si possono cancellare solo prenotazioni \textbf{non concluse}: quelle concluse costituiscono lo storico dell'aula e del docente. \\ \hline
+C17 & ``Filtrandole per aula o docente'' & I due filtri si possono usare \textbf{separatamente o insieme}. Usati insieme, si mostrano le prenotazioni che soddisfano entrambi. \\ \hline
+C18 & Durata minima di una serie & La data di termine di una serie deve essere almeno \textbf{7 giorni} dopo la data della prima occorrenza, così la serie ha almeno due occorrenze. Per una sola data si usa la prenotazione singola. \\ \hline
+\end{longtable}
+
+\subsection{Codifica e priorità dei requisiti}
+Ogni requisito ha un \textbf{codice univoco} formato da un prefisso, che ne indica la categoria, e da un numero:
+
+\begin{center}
+\begin{tabular}{|l|l|l|}\hline
+\textbf{Area dei requisiti} & \textbf{Prefisso} & \textbf{Numerazione} \\ \hline
+Business flow & BF & BF1, BF2, \dots{} \\ \hline
+Funzionalità individuale & FI & FI1.1, FI1.2, FI2.1, \dots{} \\ \hline
+Esigenza di dati e informazioni & ED & ED1.1, ED1.2, ED2.1, \dots{} \\ \hline
+Interfaccia utente & IU & IU1.1, IU1.2, IU2.1, \dots{} \\ \hline
+Interfaccia con sistemi esterni & IS & IS1, IS2, \dots{} \\ \hline
+Requisito non funzionale & NF & NF1, NF2, \dots{} \\ \hline
+\end{tabular}
+\end{center}
+Per FI, ED e IU la prima cifra indica l'\textbf{area funzionale} a cui il requisito appartiene. I casi d'uso (UC) seguono la stessa numerazione:
+
+\begin{center}
+\begin{tabular}{|c|P{9cm}|}\hline
+\textbf{N.} & \textbf{Area funzionale} \\ \hline
+1 & Aule \\ \hline
+2 & Docenti \\ \hline
+3 & Inserimento delle prenotazioni \\ \hline
+4 & Consultazione e cancellazione delle prenotazioni, archivio e aspetti comuni \\ \hline
+\end{tabular}
+\end{center}
+La \textbf{priorità} è assegnata in base al valore per l'utente (business value):
+
+\begin{center}
+\begin{tabular}{|P{2.1cm}|P{4.3cm}|P{4.3cm}|}\hline
+\textbf{Priorità} & \textbf{Significato} & \textbf{Criterio adottato} \\ \hline
+MUST HAVE & Senza questo requisito il sistema è inutilizzabile o non rispetta la traccia. & Funzionalità e vincoli richiesti dalla traccia, più le regole indispensabili per realizzarli in modo coerente. \\ \hline
+SHOULD HAVE & Importante, ma la sua assenza non rende il sistema un fallimento. & Usabilità, robustezza e qualità aggiunte dal gruppo. \\ \hline
+NICE TO HAVE & Da realizzare solo se costa poco. & Funzionalità non richieste dalla traccia, proposte dal gruppo. \\ \hline
+\end{tabular}
+\end{center}
+Per le funzionalità individuali si indica anche il \textbf{rischio tecnico} (Basso, Medio, Alto), cioè la difficoltà prevista nel realizzarle. La voce \textbf{Fonte} indica da dove nasce il requisito: la traccia del progetto oppure uno dei chiarimenti C1–C18. La voce \textbf{Stato} indica se il requisito è accettato per questa versione o rimandato.

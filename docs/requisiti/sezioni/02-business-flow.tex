@@ -1,0 +1,16 @@
+\subsection{Business flow (BF)}
+\subsubsection{[BF1] Pianificazione delle lezioni di un semestre}
+L'Operatore registra le aule e i docenti non ancora presenti. Per ogni corso cerca un'aula libera nel giorno e nell'orario della lezione e inserisce una prenotazione ricorrente settimanale fino alla fine del semestre. Se alcune settimane sono in conflitto, decide se salvare solo le date libere o cambiare aula o orario.\\
+Funzionalità coinvolte: FI1.1, FI2.1, FI3.1, FI3.3, FI3.4, FI3.5, FI3.6\\Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[BF2] Organizzazione di un evento singolo (esame o seminario)}
+L'Operatore cerca le aule disponibili nella data e fascia oraria dell'evento, sceglie un'aula di capienza adeguata tra quelle libere e inserisce una prenotazione singola.\\
+Funzionalità coinvolte: FI3.1, FI3.2, FI3.4, FI3.5, FI3.7\\Priorità: MUST\\Fonte: Traccia
+
+\subsubsection{[BF3] Gestione delle variazioni}
+Se una lezione salta, l'Operatore cancella la singola occorrenza. Se un corso termina in anticipo, cancella l'occorrenza da cui il corso non si tiene più e tutte le successive. Se un'aula viene dismessa o un docente lascia il dipartimento, cancella l'aula o il docente, verificando l'elenco delle prenotazioni non concluse che verranno rimosse.\\
+Funzionalità coinvolte: FI4.1, FI4.4, FI4.5, FI1.3, FI1.4, FI2.3, FI2.4\\Priorità: MUST\\Fonte: Traccia, C3, C4
+
+\subsubsection{[BF4] Consultazione dell'occupazione}
+L'Operatore verifica gli impegni di un docente o l'occupazione di un'aula visualizzando le prenotazioni in ordine cronologico, filtrate per docente e/o per aula.\\
+Funzionalità coinvolte: FI4.1, FI4.2, FI4.3\\Priorità: MUST\\Fonte: Traccia, C17
