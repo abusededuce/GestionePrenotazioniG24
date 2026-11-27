@@ -1,0 +1,28 @@
+\paragraph{Area 3 – Inserimento delle prenotazioni}~\\
+\subsubsection{[FI3.1] Ricerca aule disponibili}
+L'Operatore deve poter cercare le aule disponibili in una data e fascia oraria. Il risultato contiene le aule che non hanno prenotazioni sovrapposte alla fascia indicata, ordinate per codice.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia\\Stato: Accettato\\Caso d'uso: UC3.1
+
+\subsubsection{[FI3.2] Inserimento prenotazione singola}
+L'Operatore deve poter inserire una prenotazione singola specificando aula, docente, tipo di attività, denominazione, data, ora di inizio e ora di fine.\\
+Priorità: MUST\\Rischio tecnico: Basso\\Fonte: Traccia\\Stato: Accettato\\Caso d'uso: UC3.2
+
+\subsubsection{[FI3.3] Inserimento prenotazione ricorrente}
+L'Operatore deve poter inserire una prenotazione ricorrente specificando, oltre ai dati di FI3.2, una data di termine. Il sistema crea un'occorrenza ogni 7 giorni, a partire dalla data indicata e fino alla data di termine inclusa.\\
+Priorità: MUST\\Rischio tecnico: Medio\\Fonte: Traccia\\Stato: Accettato\\Caso d'uso: UC3.3
+
+\subsubsection{[FI3.4] Controllo sovrapposizioni per aula}
+Il sistema deve rifiutare una prenotazione (o un'occorrenza) che si sovrappone a un'altra prenotazione della \textbf{stessa aula}.\\
+Priorità: MUST\\Rischio tecnico: Medio\\Fonte: Traccia, C7\\Stato: Accettato\\Caso d'uso: UC3.2, UC3.3, UC3.4
+
+\subsubsection{[FI3.5] Controllo sovrapposizioni per docente}
+Il sistema deve rifiutare una prenotazione (o un'occorrenza) che si sovrappone a un'altra prenotazione dello \textbf{stesso docente}.\\
+Priorità: MUST\\Rischio tecnico: Medio\\Fonte: Traccia, C7\\Stato: Accettato\\Caso d'uso: UC3.2, UC3.3, UC3.4
+
+\subsubsection{[FI3.6] Gestione dei conflitti di una serie}
+Se alcune occorrenze di una prenotazione ricorrente sono in conflitto, il sistema deve mostrare le date in conflitto con il relativo motivo e permettere all'Operatore di scegliere tra: salvare solo le occorrenze libere, modificare i dati inseriti, annullare l'inserimento. Se tutte le occorrenze sono in conflitto sono disponibili solo le ultime due scelte.\\
+Priorità: MUST\\Rischio tecnico: Medio\\Fonte: C5\\Stato: Accettato\\Caso d'uso: UC3.5
+
+\subsubsection{[FI3.7] Prenotazione dai risultati della ricerca}
+Dai risultati della ricerca delle aule disponibili, l'Operatore deve poter avviare l'inserimento di una prenotazione con aula, data e fascia oraria già compilate.\\
+Priorità: NICE TO HAVE\\Rischio tecnico: Basso\\Fonte: Proposta del gruppo\\Stato: Accettato\\Caso d'uso: UC3.1, UC3.2
