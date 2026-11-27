@@ -1,0 +1,60 @@
+@startuml uc-generale
+!include _stile.iuml
+left to right direction
+title Diagramma generale dei casi d'uso
+
+actor Operatore
+
+rectangle "Sistema di prenotazione aule" {
+  package "Area 1 - Aule" {
+    usecase "UC1.1\nInserisciAula" as UC11
+    usecase "UC1.2\nModificaAula" as UC12
+    usecase "UC1.3\nCancellaAula" as UC13
+    usecase "UC1.4\nCancellaPrenotazioniInCascata" as UC14
+    usecase "UC1.5\nVisualizzaAule" as UC15
+    usecase "UC1.6\nCercaAula" as UC16
+  }
+  package "Area 2 - Docenti" {
+    usecase "UC2.1\nInserisciDocente" as UC21
+    usecase "UC2.2\nModificaDocente" as UC22
+    usecase "UC2.3\nCancellaDocente" as UC23
+    usecase "UC2.4\nVisualizzaDocenti" as UC24
+    usecase "UC2.5\nCercaDocente" as UC25
+  }
+  package "Area 3 - Inserimento prenotazioni" {
+    usecase "UC3.1\nCercaAuleDisponibili" as UC31
+    usecase "UC3.2\nInserisciPrenotazioneSingola" as UC32
+    usecase "UC3.3\nInserisciPrenotazioneRicorrente" as UC33
+    usecase "UC3.4\nVerificaSovrapposizioni" as UC34
+    usecase "UC3.5\nGestisciConflittiSerie" as UC35
+  }
+  package "Area 4 - Consultazione e cancellazione prenotazioni" {
+    usecase "UC4.1\nVisualizzaPrenotazioni" as UC41
+    usecase "UC4.2\nCancellaPrenotazione" as UC42
+    usecase "UC4.3\nCancellaOccorrenzeSuccessive" as UC43
+  }
+}
+
+Operatore -- UC11
+Operatore -- UC12
+Operatore -- UC13
+Operatore -- UC15
+Operatore -- UC16
+Operatore -- UC21
+Operatore -- UC22
+Operatore -- UC23
+Operatore -- UC24
+Operatore -- UC25
+Operatore -- UC31
+Operatore -- UC32
+Operatore -- UC33
+Operatore -- UC41
+Operatore -- UC42
+
+UC13 <.. UC14 : <<extend>>
+UC23 <.. UC14 : <<extend>>
+UC32 ..> UC34 : <<include>>
+UC33 ..> UC34 : <<include>>
+UC33 <.. UC35 : <<extend>>
+UC42 <.. UC43 : <<extend>>
+@enduml
